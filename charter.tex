@@ -14,8 +14,8 @@
 \autor{Martín Alejandro Mello Teggia} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{Pablo Castillo}
+\pertenenciaDirector{CoNEA} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
@@ -63,7 +63,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0.1      & Creación del documento                                          & 23/10/2020 \\ \hline
-%0.2      & Avances hasta punto 6 inclusive                                          & 06/10/2020 \\ \hline
+0.2      & Avances hasta punto 6 inclusive (sin user stories)                                         & 05/11/2020 \\ \hline
 %1.2      & Otro ejemplo \newline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
@@ -103,58 +103,98 @@ Se adjunta a esta acta la planificación inicial.
 
 
 
-
+\newpage
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+\subsection*{Introducción general al tema}
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+El mantenimiento predictivo es indispensable en la industria farmacéutica, ya que la falla de un actuador puede implicar la pérdida de un lote completo de medicamentos, procesos que pueden consumir días enteros, y valiosos insumos.
 
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
+Existe bibliografía que permite evaluar el desgaste de un motor mediante el análisis de sus vibraciones, procesando la información adquirida en el dominio de la frecuencia, y datos estadísticos en el dominio del tiempo.
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+En la empresa Hitec S.R.L. se desarrolló un sistema para realizar esta tarea, pero el objetivo del presente trabajo es trasladar el procesamiento al edge (MCU del sensor), permitiendo extraer información de los sensores y no solo datos de mediciones.
 
-\vspace{25px}
+Este producto se presenta como un sensor innovador, ya que las mediciones para mantenimiento predictivo se realizan mayormente offline. La integración de este sensor permite integrar el mantenimiento en la nube, lo que lo diferencia de la mayor parte de la competencia.
+
+\subsection*{Descripción del producto a desarrollar}
+
+El objetivo del hardware a desarrollar es adquirir y procesar datos de vibración y temperatura en el mismo sensor, para entregar información pre-procesada a una unidad central.
+
+Para esto, el sensor deberá contar con un microcontrolador que realice las adquisiciones, procesamiento y comunicación de resultados, un circuito integrado que permita adquirir valores de vibración en tiempo real, un sensor de temperatura para medir las variaciones del dispositivo bajo análisis, y una memoria para almacenar datos de fabricación (y eventualmente calibración) independientes de la programación del microcontrolador. 
+
+En la figura \ref{fig:diagramaBloques} se presenta un diagrama en bloques del sistema, donde puede verse las relaciones previamente mencionadas.
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
+\includegraphics[width=1\textwidth]{./Figuras/diagramaBloques.png}
 \caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
+\label{fig:diagramaBloques}
 \end{figure}
 
-\vspace{25px}
+El integrado de vibración debe ser encuestado a frecuencia constante, para garantizar el espaciamiento temporal de los valores medidos. El sensor de temperatura será encuestado solo para valores estadísticos, por lo que no será necesario un retardo estable entre mediciones.
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
-\end{consigna}
+El microcontrolador debe poder adquirir los valores, computar parámetros estadísticos, procesar el paso al dominio de la frecuencia, y extraer también información de esta representación. Es importante que el distanciamiento de muestras en el dominio del tiempo sea constante, para evitar el jitter en frecuencia. Finalmente, deberá almacenar los resultados obtenidos, e informarlos con una frecuencia configurable a un dispositivo central.
+
+El sensor estará diseñado para soportar descargas electrostáticas, y otros eventos de compatibilidad electromagnética que puedan surgir en la industria. Para esto, se buscará cumplir con las siguientes normas:
+\begin{itemize}
+\item IEC 61000-4-2: ESD
+\item IEC 61000-4-4: EFT
+\item IEC 61000-4-5: Surge
+\end{itemize}
+
+De ser posible, también es de interés que el sensor sea ATEX, para poder operar en entornos que requieren que los dispositivos sean anti-explosivos.
+
+
+
+%\begin{consigna}{red}
+%El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
+%Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+%
+%Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+%
+%\begin{itemize}
+%\item ¿Cómo se vincula este proyecto con la misión de la organización?
+%\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
+%\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
+%\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
+%\item ¿Cuales son las necesidades que debe satisfacer?
+%\item ¿Por dónde pasa la innovación?
+%\end{itemize}
+%
+%La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+%
+%\vspace{25px}
+%
+%\begin{figure}[htpb]
+%\centering 
+%\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
+%\caption{Diagrama en bloques del sistema}
+%\label{fig:diagBloques}
+%\end{figure}
+%
+%\vspace{25px}
+%
+%El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
+%\end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
+%\begin{consigna}{black}
+%Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
+% 
+%Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
+% 
+%Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
+%
+%\begin{itemize}
+%\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
+%\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
+%\end{itemize}
+%
+%Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -163,81 +203,86 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Auspiciante   &      Matías Montero             &       HiTec S.R.L.       	&      Contador  	\\ \hline
+Cliente       & \clientename      &\empclientename	& Gerente I+D     	\\ \hline
+Impulsor      & \clientename      &\empclientename	& Gerente I+D     	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
+Colaboradores & Nicolás Dini & HiTec S.R.L. & Programador Senior \\ \newline 
+			&	Luciano Gurevich  &    HiTec S.R.L.        	&  Data Scientist      	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+%Equipo        & - & - & -	\\ \hline
+%Opositores    &           -        &       -       	&      -  	\\ \hline
+Usuario final &       Martín Tomé            &  HiTec S.R.L.           	&  Jefe Servicio Técnico      	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
 
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
+\item Impulsor: \clientename tiene un conocimiento profundo de la industria, y las necesidades reales del producto.
+\item Usuario Final: Martín Tomé tiene mucha experiencia con instalaciones, y puede ayudar a hacer más fácil de instalar y mantener el dispositivo, pero tiene poco tiempo disponible.
+\item Colaborador: Nicolás Dini se ocupa de la interfaz de datos con la nube, el sensor tiene que poder finalmente comunicarse con su software.
 \end{itemize}
 
-\end{consigna}
+%\end{consigna}
 
 
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+El propósito de este proyecto es desarrollar un sensor inteligente, capaz de adquirir y pre-procesar datos de un sensor de vibración, para poder utilizarlos para realizar mantenimiento predictivo sobre motores de la industria farmacéutica.
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+%\begin{consigna}{red}
+%¿Qué se incluye y que no se incluye en este proyecto?
+%
+%Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+%
+%Explicitar todo lo quede comprendido dentro del alcance del proyecto.
+%
+%Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
+%
+%\end{consigna}
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+El presente proyecto incluirá el desarrollo completo del hardware del sensor, e incluirá el desarrollo del firmware para la realización de las siguientes funciones:
 
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
+\begin{itemize}
+\item Adquisición de valores de aceleración en 3 ejes.
+\item Procesamiento de parámetros estadísticos en el dominio del tiempo.
+	\begin{itemize}
+	\item Valores de aceleración RMS (sin continua).
+	\item Valores de aceleración continua.
+	\item Factor de cresta.
+	\end{itemize}
+\item Procesamiento de los valores en frecuencia.
+\item Configuración del ancho de banda deseado en frecuencia.
+\item Implementación de un código de tramas para comunicación con la unidad central.
+\item Adquisición de valores de temperatura para análisis estadístico
+\item Compatibilidad con el producto teBox (HiTec S.R.L.)
+\end{itemize}
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
-
+El firmware no incluirá la posibilidad de modificar la cantidad de muestras analizadas en frecuencia, ni la orientación de los ejes en función de la posición de instalación del sensor.
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
+\item La empresa HiTec se ocupará de la compra del material necesario para la fabricación del sensor, así como también de todos aquellos elementos requeridos para realizar las pruebas iniciales del producto.
+\item Se dispondrá de las unidades necesarias del producto teBox para pruebas de compatibilidad, y que el mismo cumple con sus especificaciones.
+\item Se podrá consultar a Martín Tomé por cuestiones relacionadas a la instalación del sensor, a fin de desarrollar un dispositivo sencillo de utilizar desde su primera versión.
+\item El laboratorio de pruebas de la empresa HiTec S.R.L. estará disponible durante toda la realización del proyecto, para realizar las pruebas necesarias con el instrumental presente en el mismo.
+\item El protocolo que se defina para comunicar al sensor será estandar, o contará con amplia documentación para su implementación en el microcontrolador.
+\item Los componentes utilizados podrán ser adquiridos en Argentina, o traídos del exterior, durante la duración del proyecto.
+\item Se podrán realizar las pruebas de compatibilidad electromagnética en el país durante la realización del proyecto.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
-
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
 
 \begin{enumerate}
 \item Grupo de requerimientos asociados con...
@@ -253,22 +298,6 @@ Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
 	\end{enumerate}
 \end{enumerate}
 
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
