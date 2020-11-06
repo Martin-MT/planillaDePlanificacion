@@ -63,11 +63,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0.1      & Creación del documento                                          & 23/10/2020 \\ \hline
-0.2      & Avances hasta punto 6 inclusive (sin user stories)                                         & 05/11/2020 \\ \hline
-%1.2      & Otro ejemplo \newline
-%		   Con texto partido \newline
-%		   En varias líneas \newline
-%		   A propósito                                                     & dd/mm/aaaa \\ \hline
+0.2      & Avances hasta punto 6 inclusive (sin user stories)                                         & 06/11/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -353,37 +349,64 @@ Los entregables principales del proyecto serán:
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Gestión del proyecto (88 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Análisis de bibliografía existente y opciones desplegadas en el mercado (40 hs)
+	\item Elaboración de la planificación del proyecto (40 hs)
+	\item Definición de los casos de prueba (8 hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Diseño de hardware (104 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Diseño de la arquitectura de hardware a utilizar (24 hs)
+	\item Análisis y elección de un gabinete (16 hs)
+	\item Diseño del PCB (40 hs)
+	\item Elección de conectores (16 hs)
+	\item Revisión del CAD del gabinete con el del PCB y los conectores (8 hs)
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item Desarrollo de firmware (232 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item Desarrollo de biblioteca para manejo de periféricos necesarios (16 hs)
+	\item Desarrollo de biblioteca para adquisición y almacenamiento de valores de los sensores (40 hs)
+	\item Procesamiento de valores para obtención de estadísticos (16 hs)
+	\item Implementación de algoritmo de FFT (16 hs)
+	\item Procesamiento de valores en el dominio de la frecuencia (40 hs)
+	\item Programación de interfaz para comunicación con teBox (40 hs)
+	\item Procesamiento de valores históricos, e interacción con memoria flash externa (32 hs)
+	\item Ajuste de valores contra un patrón (32 hs)
+	\end{enumerate}
+\item Producción de prototipo (56 hs)
+	\begin{enumerate}
+	\item Logística de fabricación de prototipo de PCB (8 hs)
+	\item Adquisición de componentes de conexionado (16 hs)
+	\item Logística de recepción de elementos (8 hs)
+	\item Ensamblado de prototipos (16 hs)
+	\item Medición de tensiones y conexionado en prototipo ensamblado (8 hs)
+	\end{enumerate}
+\item Testing y depuración (120 hs)
+	\begin{enumerate}
+	\item Generación de muestras para casos de prueba (40 hs)
+	\item Validación de los valores obtenidos contra muestras patrón (24 hs)
+	\item Ensayos de compatibilidad electromagnética (16 hs)
+	\item Modificaciones en base a errores detectados (40 hs)
+	\end{enumerate}
+\item Documentación (112 hs)
+	\begin{enumerate}
+	\item Elaboración de manuales (56 hs)
+	\item Documentación en wiki de la empresa (32 hs)
+	\item Elaboración de diagrama de flujo del programa (24 hs)
+	\end{enumerate}
+\item Cierre de proyecto (100 hs)
+	\begin{enumerate}
+	\item Gestión del proceso de cierre del proyecto (8 hs)
+	\item Elaboración de informe final (64 hs)
+	\item Elaboración de la presentación (24 hs)
+	\item Presentación del informe final (4 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: 812 hs
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
