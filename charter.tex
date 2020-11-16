@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Sensor inteligente} 
+\titulo{Sensor inteligente de vibración para mantenimiento predictivo} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -64,6 +64,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0.1      & Creación del documento                                          & 23/10/2020 \\ \hline
 0.2      & Avances hasta punto 6 inclusive (sin user stories)                                         & 06/11/2020 \\ \hline
+0.3      & Agregado de user stories, y correcciones varias de secciones previas                                         & 15/11/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -80,7 +81,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema de control de temperatura de un calefón, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sensor de vibración y temperatura, y tendrá un presupuesto preliminar estimado de 812 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -109,7 +110,7 @@ El mantenimiento predictivo es indispensable en la industria farmacéutica, ya q
 
 Existe bibliografía que permite evaluar el desgaste de un motor mediante el análisis de sus vibraciones, procesando la información adquirida en el dominio de la frecuencia, y datos estadísticos en el dominio del tiempo.
 
-En la empresa Hitec S.R.L. se desarrolló un sistema para realizar esta tarea, pero el objetivo del presente trabajo es trasladar el procesamiento al edge (MCU del sensor), permitiendo extraer información de los sensores y no solo datos de mediciones.
+En la empresa Hitec S.R.L. se desarrolló un sistema para realizar esta tarea, pero el objetivo del presente trabajo es trasladar el procesamiento al edge (MCU del sensor), y permitir la extracción de información de los sensores y no solo datos de mediciones.
 
 Este producto se presenta como un sensor innovador, ya que las mediciones para mantenimiento predictivo se realizan mayormente offline. La integración de este sensor permite integrar el mantenimiento en la nube, lo que lo diferencia de la mayor parte de la competencia.
 
@@ -268,9 +269,9 @@ Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
 \item La empresa HiTec se ocupará de la compra del material necesario para la fabricación del sensor, así como también de todos aquellos elementos requeridos para realizar las pruebas iniciales del producto.
-\item Se dispondrá de las unidades necesarias del producto teBox para pruebas de compatibilidad, y que el mismo cumple con sus especificaciones.
+\item Se dispondrá de las unidades necesarias del producto teBox para pruebas de compatibilidad, y que las unidades cumplen con sus especificaciones.
 \item Se podrá consultar a Martín Tomé por cuestiones relacionadas a la instalación del sensor, a fin de desarrollar un dispositivo sencillo de utilizar desde su primera versión.
-\item El laboratorio de pruebas de la empresa HiTec S.R.L. estará disponible durante toda la realización del proyecto, para realizar las pruebas necesarias con el instrumental presente en el mismo.
+\item El laboratorio de pruebas de la empresa HiTec S.R.L. estará disponible durante toda la realización del proyecto, para realizar los ensayos necesarios con el instrumental presente.
 \item El protocolo que se defina para comunicar al sensor será estandar, o contará con amplia documentación para su implementación en el microcontrolador.
 \item Los componentes utilizados podrán ser adquiridos en Argentina, o traídos del exterior, durante la duración del proyecto.
 \item Se podrán realizar las pruebas de compatibilidad electromagnética en el país durante la realización del proyecto.
@@ -283,14 +284,14 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{enumerate}
 \item Requerimientos de construcción del equipo
 	\begin{enumerate}
-	\item El gabinete deberá poder acoplarse a un motor sin necesidad de modificar al mismo para hacerlo.
+	\item El gabinete deberá poder acoplarse a un motor sin necesidad de modificaciones.
 	\item Se debe proveer con el mecanismo de acople una forma de medir la temperatura del motor.
 	\item El gabinete será metálico (prioridad menor).
 	\end{enumerate}
 \item Requerimientos de conexionado
 	\begin{enumerate}
-	\item Linea de alimentación que contenga 5 V y permita extraer una corriente máxima de 200 mA.
-	\item Linea de datos referido al mismo punto que la alimentación
+	\item Línea de alimentación que contenga 5 V y permita extraer una corriente máxima de 200 mA.
+	\item Línea de datos referido al mismo punto que la alimentación
 	\item Cables que provean la alimentación y datos con polaridad.
 	\item Unificar en un único cable (prioridad menor)
 	\end{enumerate}
@@ -302,7 +303,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\end{enumerate}
 \item Requerimientos asociados a la medición
 	\begin{enumerate}
-	\item El sensor deberá poder adquirir valores de aceleración en 3 ejes ortogonales entre si.
+	\item El sensor deberá poder adquirir valores de aceleración en 3 ejes ortogonales entre sí.
 	\item El sensor deberá poder adquirir valores de temperatura del motor medido.
 	\item Deberán poder extraerse datos estadísticos en el dominio del tiempo.
 	\item Deberán poder extraerse datos en el dominio de la frecuencia.
@@ -325,11 +326,18 @@ Para el desarrollo del presente proyecto se supone que:
 \end{enumerate}
 
 
-%\section{Historias de usuarios (\textit{Product backlog})}
-%\label{sec:backlog}
-%
-%\begin{consigna}{red}
-%Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+\section{Historias de usuarios (\textit{Product backlog})}
+\label{sec:backlog}
+
+%Como .... quiero .... , para ....
+\begin{itemize}
+\item Como jefe de mantenimiento quiero conocer los valores de vibración de mi motor, para conocer el desgaste del mismo. (3 story points)
+\item Como jefe de mantenimiento quiero conocer los valores de temperatura de mi motor, para detectar sobrecalentamientos. (1 story point)
+\item Como algoritmo de mantenimiento predictivo quiero poder comunicarme con el sensor, para extraer datos del mismo (3 story points)
+\item Como algoritmo de mantenimiento predictivo quiero obtener valores estadísticos de vibración, para analizar la evolución de un motor en el tiempo. (5 story points)
+\item Como algoritmo de mantenimiento predictivo quiero obtener los valores de vibración en el dominio de la frecuencia, para detectar desbalances y desalineamientos en el sistema mecánico de un motor. (8 story points)
+\end{itemize}
+
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
