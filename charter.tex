@@ -11,17 +11,17 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Martín Alejandro Mello Teggia} 
+\autor{Ing. Martín Alejandro Mello Teggia} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Pablo Castillo}
+\director{Esp. Lic. Pablo Castillo}
 \pertenenciaDirector{CoNEA} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Cristian Muzzio}
+\cliente{Dr. Ing. Cristian Muzzio}
 \empresaCliente{HiTec S.R.L.}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -65,6 +65,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 0.1      & Creación del documento                                          & 23/10/2020 \\ \hline
 0.2      & Avances hasta punto 6 inclusive (sin user stories)                                         & 06/11/2020 \\ \hline
 0.3      & Agregado de user stories, y correcciones varias de secciones previas                                         & 15/11/2020 \\ \hline
+0.4      & Terminado hasta punto 12 inclusive, correcciones varias previas & 08/12/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -112,7 +113,7 @@ Existe bibliografía que permite evaluar el desgaste de un motor mediante el an�
 
 En la empresa Hitec S.R.L. se desarrolló un sistema para realizar esta tarea, pero el objetivo del presente trabajo es trasladar el procesamiento al edge (MCU del sensor), y permitir la extracción de información de los sensores y no solo datos de mediciones.
 
-Este producto se presenta como un sensor innovador, ya que las mediciones para mantenimiento predictivo se realizan mayormente offline. La integración de este sensor permite integrar el mantenimiento en la nube, lo que lo diferencia de la mayor parte de la competencia.
+Este producto se presenta como un sensor innovador, ya que las mediciones para mantenimiento predictivo se realizan mayormente offline. La incorporación de este sensor permite integrar el mantenimiento en la nube, lo que lo diferencia de la mayor parte de la competencia.
 
 \subsection*{Descripción del producto a desarrollar}
 
@@ -143,59 +144,10 @@ El sensor estará diseñado para soportar descargas electrostáticas, y otros ev
 De ser posible, también es de interés que el sensor sea ATEX, para poder operar en entornos que requieren que los dispositivos sean anti-explosivos.
 
 
-
-%\begin{consigna}{red}
-%El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-%Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
-%
-%Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-%
-%\begin{itemize}
-%\item ¿Cómo se vincula este proyecto con la misión de la organización?
-%\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-%\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-%\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-%\item ¿Cuales son las necesidades que debe satisfacer?
-%\item ¿Por dónde pasa la innovación?
-%\end{itemize}
-%
-%La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
-%
-%\vspace{25px}
-%
-%\begin{figure}[htpb]
-%\centering 
-%\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
-%\caption{Diagrama en bloques del sistema}
-%\label{fig:diagBloques}
-%\end{figure}
-%
-%\vspace{25px}
-%
-%El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
-%\end{consigna}
-
-
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-%\begin{consigna}{black}
-%Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
-% 
-%Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
-% 
-%Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-%
-%\begin{itemize}
-%\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-%\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-%\end{itemize}
-%
-%Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
-
 \begin{table}[ht]
-%\caption{Identificación de los interesados}
-%\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -219,9 +171,6 @@ Usuario final &       Martín Tomé            &  HiTec S.R.L.           	&  Jef
 \item Usuario Final: Martín Tomé tiene mucha experiencia con instalaciones, y puede ayudar a hacer más fácil de instalar y mantener el dispositivo, pero tiene poco tiempo disponible.
 \item Colaborador: Nicolás Dini se ocupa de la interfaz de datos con la nube, el sensor tiene que poder finalmente comunicarse con su software.
 \end{itemize}
-
-%\end{consigna}
-
 
 
 \section{1. Propósito del proyecto}
@@ -291,15 +240,16 @@ Para el desarrollo del presente proyecto se supone que:
 \item Requerimientos de conexionado
 	\begin{enumerate}
 	\item Línea de alimentación que contenga 5 V y permita extraer una corriente máxima de 200 mA.
-	\item Línea de datos referido al mismo punto que la alimentación
-	\item Cables que provean la alimentación y datos con polaridad.
-	\item Unificar en un único cable (prioridad menor)
+	\item Línea de datos referido al mismo punto que la alimentación.
+	\item El equipo debe contar con cables de alimentación y datos con polaridad.
+	\item El equipo debe unificar los cables de alimentación y datos en un único cable
+	 (prioridad menor).
 	\end{enumerate}
 \item Requerimientos asociados a la interfaz de comunicación
 	\begin{enumerate}
 	\item El sensor deberá poder comunicarse con el protocolo fijado por el producto teBox.
-	\item El esquéma de comunicación será maestro esclavo, con el sensor recibiendo ordenes y ejecutando acciones en base a ellas.
-	\item El sensor deberá poder reprogramarse a través de la misma interfaz de datos (prioridad menor)
+	\item El esquema de comunicación será maestro esclavo, con el sensor recibiendo ordenes y ejecutando acciones en base a ellas.
+	\item El sensor deberá poder reprogramarse a través de la misma interfaz de datos (prioridad menor).
 	\end{enumerate}
 \item Requerimientos asociados a la medición
 	\begin{enumerate}
@@ -329,7 +279,6 @@ Para el desarrollo del presente proyecto se supone que:
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-%Como .... quiero .... , para ....
 \begin{itemize}
 \item Como jefe de mantenimiento necesito conocer los valores de vibración de mi motor, para conocer el nivel de desgaste. (3 story points)
 \item Como jefe de mantenimiento necesito conocer los valores de temperatura de mi motor, para detectar sobrecalentamientos. (1 story point)
@@ -420,269 +369,151 @@ Cantidad total de horas: 812 hs
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
-
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
+\includegraphics[width=.8\textwidth]{./Figuras/ActivityOnNode.png}
+\caption{Diagrama de Activity on Node}
 \label{fig:AoN}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
 
 
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
+Debido al tamaño del proyecto, se exportó el diagrama de gantt indicando solo los números de tareas del WBS, y por separado se provee un listado del WBS para poder corroborar la correspondencia con el diagrama de AoN y WBS previo.
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.8\textwidth]{./Figuras/wbs1.png}
+%\caption{WBS - parte 1}
+\label{fig:wbs1}
 \end{figure}
 
-\end{consigna}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.8\textwidth]{./Figuras/wbs2.png}
+\caption{WBS}
+\label{fig:wbs2}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/gantt1.png}
+\caption{Diagrama de Gantt - parte 1}
+\label{fig:gantt1}
+\end{figure}
+
+\begin{figure}[htb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/gantt2.png}
+\caption{Diagrama de Gantt - parte 2}
+\label{fig:gantt2}
+\end{figure}
+
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
 
 
-\begin{table}
-\label{tab:recursos}
-\centering
-\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|c|@{}}
-\hline
-\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline 
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline 
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+%\begin{table}
+%\label{tab:recursos}
+%\centering
+%\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|c|@{}}
+%\hline
+%\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]%{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
+%\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea%\end{tabular}} & PC & TeBox & TeSensor-VT & Laboratorio de mediciones \\ \hline
+%1 & Gestión del proyecto & 88 &  &  &  \\ \hline
+%2 & Diseño de hardware & 104 &  &  &  \\ \hline
+%3 & Desarrollo de firmware & 232 & 40 &  &  \\ \hline
+%4 & Producción de prototipo & 56 &  &  & 24 \\ \hline
+%5 & Testing y depuración & 120 & 80 & 80 & 64 \\ \hline
+%6 & Documentación & 112 &  &  &  \\ \hline
+%7 & Cierre de proyecto & 100 & 28 & 28 & 24 \\ \hline
+%\end{tabularx}%
+%\end{table}
 
-\end{tabularx}%
-\end{table}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/matrizUsoRecursos.png}
+\caption{Matriz de uso de recursos}
+\label{fig:matrizRecursos}
+\end{figure}
 
 
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
-
-\begin{table}[htpb]
-\centering
-\begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Descripción &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Descripción &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
-\rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
-\end{tabularx}%
-\end{table}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/costos.png}
+\caption{Presupuesto detallado del proyecto}
+\label{fig:costos}
+\end{figure}
 
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
 
-\begin{table}[htpb]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0C0C0} &
-  \cellcolor[HTML]{C0C0C0} &
-  \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Listar todos los nombres y roles del proyecto} \\ \cline{3-6} 
-\rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0C0C0} &
-  \cellcolor[HTML]{C0C0C0} &
-  Responsable &
-  Orientador &
-  Equipo &
-  Cliente \\ \cline{3-6} 
-\rowcolor[HTML]{C0C0C0} 
-\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
-  \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
-  \authorname &
-  \supname &
-  Nombre de alguien &
-  \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabular}%
-}
-\end{table}
+\begin{figure}[h]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/responsabilidades1.png}
+\caption{Matrìz de asignación de responsabilidades - parte 1}
+\label{fig:responsabilidades1}
+\end{figure}
 
-{\footnotesize
+\begin{figure}[h]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/responsabilidades2.png}
+\caption{Matrìz de asignación de responsabilidades - parte 2}
+\label{fig:responsabilidades2}
+\end{figure}
+
 Referencias:
 \begin{itemize}
-	\item P = Responsabilidad Primaria
-	\item S = Responsabilidad Secundaria
-	\item A = Aprobación
-	\item I = Informado
-	\item C = Consultado
+\item P = Responsabilidad Primaria
+\item S = Responsabilidad Secundaria
+\item A = Aprobación
+\item I = Informado
+\item C = Consultado
 \end{itemize}
-} %footnotesize
-
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos)
-\begin{itemize}
-\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de severidad (S).
-\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de (O). 
-\end{itemize}   
+a) Identificación de los riesgos y estimación de sus consecuencias:
 
-Riesgo 2:
+Riesgo 1: El cliente informa que los requerimientos no están cumplidos en el producto.
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (S): 9. Si no se cumplen las espectativas del cliente, se dificulta la comercialización del producto.
+\item Ocurrencia (O): 4. La relación con el cliente hace que el mismo  vaya a involucrarse durante el desarrollo del producto, lo que implica una probabilidad media a baja de ocurrencia.
 \end{itemize}
 
-Riesgo 3:
+Riesgo 2: Detectar errores en el PCB fabricado.
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (S): 7. Los errores detectados pueden ser salvables o no, pero reducen la robustez del producto. La severidad es media-alta, ya que pueden existir errores en todas los ordenes de severidad.
+\item Ocurrencia (O): 7. En todo desarrollo donde quien revisa los desarrollos es el mismo que los lleva adelante, es muy probable que existan errores de diseño.
+\end{itemize}
+
+Riesgo 3: Pérdida del software desarrollado.
+\begin{itemize}
+\item Severidad (S): 7. La perdida de código puede genera retrasos importantes en el desarrollo del producto.
+\item Ocurrencia (O): 1. El uso de repositorios hace que este riesgo se vea notablemente reducido, llevandolo a un punto de ocurrencia muy bajo.
+\end{itemize}
+
+Riesgo 4: Falla de la planificación en la estimación de tiempos.
+\begin{itemize}
+\item Severidad (S): 8. Una falla en la estimación de tiempos genera retrasos en el proyecto completo, y es un riesgo severo.
+\item Ocurrencia (O): 3. La planificación extensa de las tareas a realizar, y la realización previa de proyectos similares llevan a una baja probabilidad de ocurrencia.
+\end{itemize}
+
+Riesgo 5: Problemas en la importación de los componentes
+\begin{itemize}
+\item Severidad (S): 10. Si no se pueden importar los componentes, no se puede fabricar el producto.
+\item Ocurrencia (O): 6. Durante el año 2020 cambiaron numerosas veces las reglamentaciones, y elementos que podían ser ingresados previamente al país dejaron de poder pedirse por courier.
 \end{itemize}
 
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+b) Tabla de gestión de riesgos:
 
 \begin{table}[htpb]
 \centering
@@ -690,34 +521,41 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+1- Requerimientos incumplidos   &  9 & 4  &  36   &  9  &  1  &  9    \\ \hline
+2- Errores en el PCB   &  7 & 7  &  49   &  4  &  4  &   16   \\ \hline
+3- Perdida de software       &  7 & 1  &  7   & 7   &  1  &  7    \\ \hline
+4- Falla de tiempos      & 8  &  3 &  24   & 8   & 3   &  24    \\ \hline
+5- Problemas de importación  & 10  & 5  &  50   &  10  &  2  &  20    \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
-
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+Riesgo 1: El cliente informa que los requerimientos no están cumplidos en el producto.
+\begin{itemize}
+\item Plan de mitigación: Se firmarán con el cliente especificaciones claras a ser cumplidas, y los procesos de validación de las mismas.
+\item Severidad (S): 9. Sigue siendo igual de serio el riesgo de que no se cumpla una especificación.
+\item Probabilidad de ocurrencia (O): 1. Al dejar documentos firmados con la forma de evaluación, se elimina cualquier subjetividad que pueda existir sobre el cumplimiento del producto.
+\end{itemize}
  
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
-
+Riesgo 2: Detectar errores en el PCB fabricado.
+\begin{itemize}
+\item Plan de mitigación: Se reserva tiempo para realizar pruebas, y realizar un rediseño en base a los errores detectados.
+\item Severidad (S): 4. Los errores más serios no podrán pasar sin ser detectados de las pruebas, por lo que los errores remanentes serán de menor severidad.
+\item Probabilidad de ocurrencia (O): 4. Al contar con una instancia más de iteración, se reduce mucho la cantidad de errores que podrán resultar en el producto final.
+\end{itemize}
+ 
+Riesgo 5: Problemas de importación.
+\begin{itemize}
+\item Plan de mitigación: Se están desarrollando fabricantes locales de PCB, y contacto con importadores de componentes.
+\item Severidad (S): 10. La severidad de no conseguir los elementos necesarios sigue siendo máxima, ya que imposibilita el desarrollo del producto.
+\item Probabilidad de ocurrencia (O): 2. El agregado de nuevos canales para la obtención de los materiales necesarios vuelve poco probable que no se los pueda adquirir.
+\end{itemize}
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
