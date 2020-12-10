@@ -62,10 +62,11 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0.1      & Creación del documento                                          & 23/10/2020 \\ \hline
-0.2      & Avances hasta punto 6 inclusive (sin user stories)                                         & 06/11/2020 \\ \hline
-0.3      & Agregado de user stories, y correcciones varias de secciones previas                                         & 15/11/2020 \\ \hline
+0.1 & Creación del documento & 23/10/2020 \\ \hline
+0.2 & Avances hasta punto 6 inclusive (sin user stories) & 06/11/2020 \\ \hline
+0.3 & Agregado de user stories, y correcciones varias de secciones previas & 15/11/2020 \\ \hline
 0.4      & Terminado hasta punto 12 inclusive, correcciones varias previas & 08/12/2020 \\ \hline
+1.0      & Finalización del documento & 10/12/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -82,7 +83,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sensor de vibración y temperatura, y tendrá un presupuesto preliminar estimado de 812 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sensor de vibración y temperatura, y tendrá un presupuesto preliminar estimado de 812 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -560,28 +561,63 @@ Riesgo 5: Problemas de importación.
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
-\begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
-
-Verificación y validación:
+\begin{itemize}
+\item Grupo de requerimientos 1: Gestión del proyecto.
+\begin{itemize}
+\item Verificación: Se revisará la planificación, para confirmar que los tiempos estimados fueron cumplidos.
+\item Validación: La fecha de entrega permitirá validar la planificación.
+\end{itemize}
+\end{itemize}
 
 \begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+\item Grupo de requerimientos 2: Diseño de hardware.
+\begin{itemize}
+\item Verificación: Se verificará el CAD del gabinete con el del PCB y los conectores para confirmar la comptabilidad del hardware diseñado.
+\item Validación: Se enviarán los documentos CAD al cliente, para que valide el diseño completo.
+\end{itemize}
 \end{itemize}
 
+
+\begin{itemize}
+\item Grupo de requerimientos 3: Desarrollo de firmware.
+\begin{itemize}
+\item Verificación: Se verificará que desde la teBox puedan obtenerse datos del sensor de vibración, y que los mismos se correspondan con el eje de la gravedad al modificar la orientación del gabinete.
+\item Validación: Se subirán a una plataforma web valores medidos por el sensor, y se le proporcionará al cliente acceso a los mismos.
+\end{itemize}
 \end{itemize}
 
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.
 
-\end{consigna}
+\begin{itemize}
+\item Grupo de requerimientos 4: Producción de prototipo.
+\begin{itemize}
+\item Verificación: Se comprobará que el prototipo ensamblado cumpla con los requerimientos establecidos.
+\item Validación: Se enviará un video en funcionamiento del prototipo al cliente, en el cual se mostrará el prototipo funcionando.
+\end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
+\item Grupo de requerimientos 5: Testing y depuración.
+\begin{itemize}
+\item Verificación: Se ensayará el prototipo en el INTI, para verificar los requerimientos de EMC establecidos. También se evaluaran los casos de prueba previamente establecidos.
+\item Validación: Se enviarán los certificados de las pruebas de EMC, junto con los resultados de los casos de prueba al cliente.
+\end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
+\item Grupo de requerimientos 6 : Documentación.
+\begin{itemize}
+\item Verificación: Se revisará haber cumplido con todos los requisitos de documentación establecidos en el proyecto.
+\item Validación: Se enviarán al cliente los documentos finales redactados.
+\end{itemize}
+\end{itemize}
+
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
 
-El plan de comunicación del proyecto es el siguiente:
+El responsable de todas las comunicaciones será el responsable del proyecto. El plan de comunicación del proyecto es el siguiente:
 
 \begin{table}[htpb]
 \centering
@@ -590,33 +626,26 @@ El plan de comunicación del proyecto es el siguiente:
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
+¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline 
+Definición de la planificación del proyecto & Todos los interesados & Confirmar el alcance del proyecto & Una vez (al inicio del proyecto) & Correo electrónico y llamada telefónica & Martín Mello Teggia \\ \hline
+Avance del proyecto & Orientador y cliente & Informar el estado y recibir sugerencias & Semanal & Correo electrónico & Martín Mello Teggia \\ \hline
+Resolución de conflictos & Orientador y cliente & Plantear problemas y recoger posibles soluciones & Cada vez que sea necesario & Video conferencia & Martín Mello Teggia \\ \hline
+Consultas & Colaborador & Información del producto teBox & Cada vez que sea necesario & Sistemea de chat de la empresa & Martín Mello Teggia \\ \hline
+Prototipo ensamblado & Todos los interesados & Validación del diseño & Una vez & Correo electrónico & Martín Mello Teggia \\ \hline
+Finalización del proyecto & Todos los interesados & Validación del producto & Una vez (al finalizar el proyecto) & Correo electrónico y video conferencia & Martín Mello Teggia \\ \hline
 \end{tabularx}
 \end{table}
 
 \section{15. Gestión de compras}
 \label{sec:compras}
 
-\begin{consigna}{red}
-En caso de tener que comprar elementos o contratar servicios:
-a) Explique con qué criterios elegiría a un proveedor.
-b) Redacte el Statement of Work correspondiente.
-\end{consigna}
+En este caso, todas las compras se realizarán a través del departamento de compras de la empresa HiTec S.R.L..
+
+Todas estas compras se llevarán a cabo de acuerdo a los criterios utilizados por la empresa, y no forman parte del presente trabajo.
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
 
-\begin{consigna}{red}
-Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
-
-El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
-
-\end{consigna}
 
 \begin{longtable}{|m{1cm}|m{3.5cm}|m{2.2cm}|m{2cm}|m{3cm}|m{1.5cm}|}
 \hline
@@ -637,46 +666,27 @@ Tarea del WBS 			& Indicador de avance & Frecuencia de reporte & Resp. de seguim
 \endfoot
 
 \endlastfoot
-
-1.1	& Fecha de inicio  & Única vez al comienzo & \authorname & \clientename, \supname & email \\ \hline
-2.1	& Avance de las subtareas  & Mensual mientras dure la tarea & \authorname & \clientename, \supname & email \\ \hline
+1.x & \# tareas terminadas & Única vez (al comienzo) & \authorname & \clientename, \supname & Correo electrónico y llamada telefónica \\ \hline
+2.x & \% del hardware terminado & Semanalmente & \authorname & \clientename, \supname & Correo electrónico \\ \hline
+3.x & \% de las funciones implementadas & Semanalmente & \authorname & \clientename, \supname & Correo electrónico \\ \hline
+4.x & \% componentes obtenidos & Semanalmente & \authorname & \clientename, \supname & Correo electrónico \\ \hline
+5.1 & \% casos de prueba evaluados & Semanalmente & \authorname & \clientename, \supname & Correo electrónico \\ \hline
+5.2 & \% muestras evaluadas & Única vez & \authorname & \clientename, \supname & Correo electrónico \\ \hline
+5.3 & \% pruebas superadas & Única vez & \authorname & \clientename, \supname & Correo electrónico \\ \hline
+6.x & \% archivos de documentación entregados & Semanalmente & \authorname & \clientename, \supname & Correo electrónico \\ \hline
 
 \end{longtable}
 
-\begin{table}[!htpb]
-\centering
-%\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
-\begin{tabularx}{\linewidth}{@{}|X|C{2.5cm}|C{3cm}|C{2cm}|C{2cm}|C{2.5cm}|@{}}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
-%}
-\end{table}
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+Tomando la planificación inicial como punto de partida, se evaluará cual fue el grado de cumplimiento de cada tarea. Para aquellas que no pudieron ser cumplidas, o que tomaron al menos un 20\% adicional de tiempo, se realizará una descripción de los problemas encontrados para referencia futura.
 
 \begin{itemize}
-\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-  - Indicar esto y quién financiará los gastos correspondientes.
+\item Se entregará al cliente toda la documentación del proyecto, de acuerdo a lo pactado en la planificación, para ser utilizado como el cliente crea conveniente.
+\item Se realizará una presentación en la que se expondrá el trabajo realizado, para ser presentado frente a las autoridades de la carrera de especialización.
+\item Se agradecerá a todos los que colaboraron en la realización del proyecto, principalmente a los colaboradores.
 \end{itemize}
-
-\end{consigna}
-
 
 \end{document}
